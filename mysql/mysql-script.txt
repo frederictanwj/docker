@@ -1,0 +1,15 @@
+create database if not exists business;
+
+create table companies (id bigint primary key auto_increment, name varchar(128) not null);
+describe companies;
+
+insert into companies (name) values ('Loblaws'), ('Warlmart'), ('Costco');
+
+create table employees (id bigint primary key auto_increment, name varchar(128) not null, company_id bigint not null, foreign key (company_id) references companies(id));
+describe employees;
+
+insert into employees (name, company_id) values ('laozhu', 1);
+insert into employees (name, company_id) values ('laoyan', 2);
+
+select * from companies, employees where companies.id = employees.company_id;
+

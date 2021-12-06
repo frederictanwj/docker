@@ -1,0 +1,4 @@
+create keyspace if not exists eva-space with replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+create table eva_friends (id UUID primary key, name text, phone bigint);
+insert into eva_friends (id, name, phone) values (5b6962dd-3f90-4c93-8f61-eabfa4a803e2, 'fred', 8193292128);
+select *from eva_friends;

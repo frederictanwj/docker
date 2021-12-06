@@ -1,0 +1,16 @@
+// list topic:
+kafka-topics.sh --list --bootstrap-server kafka_svr:9092
+
+// describe topic:
+kafka-topics.sh --describe --topic zopic --bootstrap-server kafka_svr:9092
+
+// create topic:
+kafka-topics.sh --create --topic zopic --partitions 2 --replication-factor 1 --bootstrap-server kafka_svr:9092
+// replication-factor should not be more than the amount of brokers
+
+// write message:
+kafka-console-producer.sh --topic zopic --bootstrap-server kafka_svr:9092
+
+// read message:
+kafka-console-consumer.sh --topic zopic --bootstrap-server kafka_svr:9092 [--from-beginning]
+

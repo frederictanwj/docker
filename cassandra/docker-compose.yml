@@ -1,0 +1,22 @@
+version: '2'
+
+networks:
+  eva-network:
+    name: Eva_Network
+    driver: bridge
+
+services:
+  cassandra:
+    image: docker.io/bitnami/cassandra:4.0
+    container_name: eva-cassandra
+    networks:
+      - eva-network
+    ports:
+      - '7000:7000'
+      - '9042:9042'
+    volumes:
+      - /Users/frederictan/docker/eva-cassandra:/bitnami
+    environment:
+      - CASSANDRA_SEEDS=cassandra
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=cassandra
