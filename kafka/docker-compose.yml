@@ -1,16 +1,8 @@
 version: "2"
 
-networks:
-  eva-network:
-    name: Eva_Network
-    driver: bridge
-
 services:
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.7
-    container_name: eva-zookeeper
-    networks:
-      - eva-network
     ports:
       - "2181:2181"
     volumes:
@@ -19,9 +11,6 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
     image: docker.io/bitnami/kafka:3
-    container_name: eva-kafka
-    networks:
-      - eva-network
     ports:
       - "9092:9092"
     volumes:
@@ -34,8 +23,6 @@ services:
 
 volumes:
   zookeeper_data:
-    name: eva-zookeeper
     driver: local
   kafka_data:
-    name: eva-kafka
     driver: local

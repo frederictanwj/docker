@@ -1,16 +1,24 @@
-// list topic:
-kafka-topics.sh --list --bootstrap-server kafka_svr:9092
+# list topic:
+kafka-topics.sh --list --bootstrap-server kafka_svr1:9092
 
-// describe topic:
-kafka-topics.sh --describe --topic zopic --bootstrap-server kafka_svr:9092
+# describe topic:
+#kafka-topics.sh --describe --topic topic_name --bootstrap-server kafka_ser1:9092
+kafka-topics.sh --describe --topic {topic_name} --bootstrap-server localhost:9092
 
-// create topic:
-kafka-topics.sh --create --topic zopic --partitions 2 --replication-factor 1 --bootstrap-server kafka_svr:9092
-// replication-factor should not be more than the amount of brokers
+# create topic:
+# kafka-topics.sh --create --topic {topic_name} --partitions 2 --replication-factor 2 --bootstrap-server kafka_ser1:9092
+# replication-factor should NOT be more than the amount of brokers
+kafka-topics.sh --create --topic {topic_name} --partitions 2 --replication-factor 1 --bootstrap-server localhost:9092
 
-// write message:
-kafka-console-producer.sh --topic zopic --bootstrap-server kafka_svr:9092
+# delete topic:
+# kafka-topics.sh --delete --topic {topic_name} --bootstrap-server kafka_ser2:9092
+kafka-topics.sh --delete --topic {topic_name} --bootstrap-server localhost:9092
 
-// read message:
-kafka-console-consumer.sh --topic zopic --bootstrap-server kafka_svr:9092 [--from-beginning]
+# write message:
+# kafka-console-producer.sh --topic {topic_name} --bootstrap-server kafka_ser1:9092
+kafka-console-producer.sh --topic {topic_name} --bootstrap-server localhost:9092
+
+# read message:
+# kafka-console-consumer.sh --topic {topic_name} --bootstrap-server kafka_ser2:9092 [--from-beginning]
+kafka-console-consumer.sh --topic {topic_name} --bootstrap-server localhost:9092 [--from-beginning]
 
